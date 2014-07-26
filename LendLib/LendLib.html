@@ -1,0 +1,62 @@
+<head>
+  <title>LendLib</title>
+</head>
+
+<body>
+    <div id = "lendlib">
+        <div id = "categories-container">
+            {{>categories}}
+        </div>
+        <div id = "list">
+            {{>list}}
+        </div>
+    </div>
+</body>
+
+
+
+<template name = "categories">
+    <h2 class = "title">my stuff</h2>
+    <div id = "categories" class = "btn-groups">
+        {{#if new_cat}}
+            <div class = "category"><input type = "text" id = "add-category" value = "" /></div>
+        {{/if}}
+        {{#if rem_cat}}
+            <div class = "category"><input type = "text" id = "rem-category" value = "" /></div>
+        {{/if}}
+        <div class = "category btn btn-inverse" id = "btnRemCat">-</div>
+        {{#each lists}}
+            <div class = "category btn {{list_status}}" id = "{{_id}}">
+                {{Category}}
+            </div>
+        {{/each}}
+        <div class = "category btn btn-inverse" id = "btnNewCat">&plus;</div>
+
+
+    </div>
+</template>
+
+<template name = "list">
+    <ul id = "lending_list">
+        {{#each items}}
+            <li class = "lending_item alert">
+                <button type = "button" class = "close delete_item" id = "{{Name}}">X</button>
+
+                {{Name}}
+
+                {{#if lendee_editing}}
+                    <input type = "text" id = "edit_lendee" class = "span2 pull-right" value = ""/>
+                    {{else}}
+                        <div class = "lendee pull-right label {{LendClass}}">{{Lendee}}</div>
+                {{/if}}
+            </li>
+        {{/each}}
+        {{#if list_selected}}
+            <li class = "alert-success" id = "btnAddItem">&plus;
+                {{#if list_adding}}
+                    <input class = "span3" id = "item_to_add" size = "32" type = "text"/><!--maybe take out the slash here-->
+                {{/if}}
+            </li>
+        {{/if}}
+    </ul>
+</template>

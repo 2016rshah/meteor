@@ -27,7 +27,7 @@
         {
           var catVal = String(e.target.value || "");
           if(catVal){
-            lists.insert({Category:catVal});
+            lists.insert({owner:Meteor.userId, Category:catVal});
             Session.set('adding_category', false);
           }
         }
@@ -165,3 +165,6 @@
    
   });
 //}
+Accounts.ui.config({
+  passwordSignupFields:'USERNAME_AND_OPTIONAL_EMAIL'
+});

@@ -6,7 +6,7 @@ var lists;
       // code to run on server at startup
    });
    Meteor.publish("Categories", function(){
-      return lists.find({}, {fields:{Category:1}});
+      return lists.find({owner:Meteor.userId}, {fields:{Category:1}});
    });
    Meteor.publish("listdetails", function(category_id){
       return lists.find({_id:category_id});

@@ -1,1 +1,11 @@
 /* CSS declarations go here */
+#buttons{
+    padding:10px;
+}
+#textboxes{
+    padding:10px;
+}
+#googleMap{
+    border:10px;
+}
+.gmnoprint img { max-width: none; }
